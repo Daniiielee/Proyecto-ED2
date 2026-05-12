@@ -1,0 +1,23 @@
+// Variables de color - Paleta tecnológica
+$primary-color: #1e3a8a;      // Azul principal
+$secondary-color: #0f172a;    // Azul oscuro
+$background-color: #f9fafb;   // Gris muy claro
+$text-color: #111827;         // Gris oscuro
+$accent-color: #3b82f6;       // Azul brillante
+$error-color: #dc2626;        // Rojo
+$success-color: #16a34a;      // Verde
+$border-color: #e5e7eb;       // Gris claro
+
+// Tipografía
+$font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-size-base: 1rem;
+$font-size-sm: 0.875rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

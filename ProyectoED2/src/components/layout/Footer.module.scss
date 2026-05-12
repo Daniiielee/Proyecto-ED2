@@ -1,0 +1,22 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.footer {
+  background-color: $primary-color;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  @include shadow('md');
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    opacity: 0.9;
+  }
+}
