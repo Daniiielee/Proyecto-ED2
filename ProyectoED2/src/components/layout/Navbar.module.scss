@@ -66,4 +66,42 @@
       }
     }
   }
+
+  .userArea {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .userText {
+    color: white;
+    font-size: $font-size-sm;
+    opacity: 0.95;
+  }
+
+  .userName {
+    font-weight: 700;
+    margin-left: 0.25rem;
+  }
+
+  .logoutBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    @include transition('background-color', 'color');
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: $accent-color;
+    }
+  }
 }
