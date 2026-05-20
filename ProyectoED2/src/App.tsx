@@ -9,6 +9,7 @@ import { Register } from './pages/Register';
 import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
 import { NotFound } from './pages/NotFound';
+import PrivateRoute from './components/common/PrivateRoute';
 import './styles/global.scss';
 
 // Componente principal de la aplicación
@@ -18,25 +19,25 @@ const App: React.FC = () => {
       <Router>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <Navbar />
-          
+
           <main style={{ flex: 1 }}>
             <Routes>
-              {/* Ruta de inicio */}
+              {/* Rutas públicas: accesibles sin autenticación */}
               <Route path="/" element={<Home />} />
-              
-              {/* Rutas de autenticación */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              
-              {/* Rutas de productos */}
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              
+
+              {/* Rutas privadas: requieren autenticación. Envolvemos con PrivateRoute */}
+              <Route element={<PrivateRoute />}>
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+              </Route>
+
               {/* Ruta 404 */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
-          
+
           <Footer />
         </div>
       </Router>
