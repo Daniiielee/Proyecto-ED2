@@ -9,6 +9,7 @@ import { Register } from './pages/Register';
 import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
 import { NotFound } from './pages/NotFound';
+import DataStructuresDemo from './pages/DataStructuresDemo';
 import PrivateRoute from './components/common/PrivateRoute';
 import './styles/global.scss';
 
@@ -31,6 +32,7 @@ const App: React.FC = () => {
               <Route element={<PrivateRoute />}>
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/structures" element={<DataStructuresDemo />} />
               </Route>
 
               {/* Ruta 404 */}
