@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
-import { Product } from '../../types';
+import type { Product } from '../../types';
 
 interface Props {
   product: Product;
