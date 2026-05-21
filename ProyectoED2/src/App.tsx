@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ProductProvider } from './context/ProductContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
@@ -17,9 +18,10 @@ import './styles/global.scss';
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <Router>
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Navbar />
+      <ProductProvider>
+        <Router>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
 
           <main style={{ flex: 1 }}>
             <Routes>
@@ -43,7 +45,8 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </Router>
-    </AuthProvider>
+    </ProductProvider>
+  </AuthProvider>
   );
 };
 
