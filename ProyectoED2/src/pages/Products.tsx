@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Products.module.scss';
 import { useProducts } from '../hooks/useProducts';
 import { ProductCard } from '../components/common/ProductCard';
 import { ProductForm } from '../components/common/ProductForm';
 import type { Product } from '../types';
+import { useSearch } from '../hooks/useSearch';
 
 // Página de listado de productos desde Firestore
 export const Products: React.FC = () => {
   const { products, loading, error, addProduct } = useProducts();
   const [showForm, setShowForm] = useState<boolean>(false);
   const [isLoadingTestData, setIsLoadingTestData] = useState<boolean>(false);
+  // Hook de búsqueda que usa Trie internamente
+  const { suggestions, searchTerm, initializeTrie, handleSearch, clearSearch } = useSearch();
+
+  // Estado local para resultados filtrados por búsqueda
+  const [filteredBySearch, setFilteredBySearch] = useState<Product[]>([]);
 
   // Datos de prueba académicos para demostración
   const testProducts: Omit<Product, 'id'>[] = [
@@ -82,6 +88,28 @@ export const Products: React.FC = () => {
     }
   };
 
+  // Inicializar el Trie cuando cambian los productos
+  useEffect(() => {
+    if (products && products.length > 0) {
+      initializeTrie(products.map((p) => p.name));
+    }
+  }, [products, initializeTrie]);
+
+  // Actualizar listado filtrado cuando cambia el término de búsqueda o los productos
+  useEffect(() => {
+    if (!searchTerm || searchTerm.trim() === '') {
+      setFilteredBySearch(products);
+    } else {
+      const term = searchTerm.toLowerCase();
+      setFilteredBySearch(
+        products.filter((p) => p.name.toLowerCase().includes(term))
+      );
+    }
+  }, [searchTerm, products]);
+
+  // Determinar qué productos mostrar según el término de búsqueda
+  const displayedProducts = searchTerm && searchTerm.trim() !== '' ? filteredBySearch : products;
+
   return (
     <div className={styles.container}>
       {/* Encabezado */}
@@ -108,23 +136,49 @@ export const Products: React.FC = () => {
         </div>
       </div>
 
+      {/* Sección de búsqueda (Trie) */}
+      <div className={styles.searchSection}>
+        <div className={styles.searchWrapper}>
+          <input
+            className={styles.searchInput}
+            placeholder="Buscar productos... (Trie)"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+          <span className={styles.searchBadge}>Estructura: Trie</span>
+          {searchTerm && searchTerm.trim() !== '' && (
+            <button className={styles.clearBtn} onClick={clearSearch} aria-label="Limpiar búsqueda">X</button>
+          )}
+
+          {suggestions.length > 0 && searchTerm && searchTerm.trim() !== '' && (
+            <ul className={styles.suggestions}>
+              {suggestions.map((s) => (
+                <li key={s} className={styles.suggestionItem} onClick={() => handleSearch(s)}>
+                  {s}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
       {/* Mostrar estado de carga */}
       {loading && <p className={styles.loading}>Cargando productos...</p>}
 
       {/* Mostrar errores */}
       {error && <p className={styles.error}>Error: {error}</p>}
 
-      {/* Mostrar mensaje si no hay productos */}
-      {!loading && !error && products.length === 0 && (
+      {/* Mostrar mensaje si no hay productos (considerando búsqueda) */}
+      {!loading && !error && displayedProducts.length === 0 && (
         <p className={styles.empty}>
-          No hay productos aún. ¡Sé el primero en agregar uno!
+          No hay productos que coincidan con la búsqueda.
         </p>
       )}
 
       {/* Grid de productos */}
-      {!loading && !error && products.length > 0 && (
+      {!loading && !error && displayedProducts.length > 0 && (
         <div className={styles.grid}>
-          {products.map((product) => (
+          {displayedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

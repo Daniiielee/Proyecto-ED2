@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import Trie from '../dataStructures/Trie';
+import { Trie } from '../dataStructures/Trie';
 
 // Hook para gestionar búsqueda inteligente con Trie
 export const useSearch = () => {
