@@ -9,6 +9,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
+import { TopProducts } from './pages/TopProducts';
 import { NotFound } from './pages/NotFound';
 import DataStructuresDemo from './pages/DataStructuresDemo';
 import PrivateRoute from './components/common/PrivateRoute';
@@ -34,6 +35,7 @@ const App: React.FC = () => {
               <Route element={<PrivateRoute />}>
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/top-products" element={<TopProducts />} />
                 <Route path="/structures" element={<DataStructuresDemo />} />
               </Route>
 

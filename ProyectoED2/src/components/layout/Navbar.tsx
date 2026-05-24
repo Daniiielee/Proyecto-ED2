@@ -40,6 +40,11 @@ export const Navbar: React.FC = () => {
               Productos
             </Link>
           </li>
+          <li>
+            <Link to="/top-products" className={styles.link}>
+              Top Productos
+            </Link>
+          </li>
         </ul>
 
         {/* Zona de usuario */}
