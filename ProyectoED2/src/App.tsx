@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ProductProvider } from './context/ProductContext';
+import { NavigationProvider } from './context/NavigationContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
@@ -10,6 +11,7 @@ import { Register } from './pages/Register';
 import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
 import { TopProducts } from './pages/TopProducts';
+import { NavigationHistory } from './pages/NavigationHistory';
 import { NotFound } from './pages/NotFound';
 import DataStructuresDemo from './pages/DataStructuresDemo';
 import PrivateRoute from './components/common/PrivateRoute';
@@ -20,12 +22,13 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <ProductProvider>
-        <Router>
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <Navbar />
+        <NavigationProvider>
+          <Router>
+            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+              <Navbar />
 
-          <main style={{ flex: 1 }}>
-            <Routes>
+            <main style={{ flex: 1 }}>
+              <Routes>
               {/* Rutas públicas: accesibles sin autenticación */}
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -36,6 +39,7 @@ const App: React.FC = () => {
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
                 <Route path="/top-products" element={<TopProducts />} />
+                <Route path="/history" element={<NavigationHistory />} />
                 <Route path="/structures" element={<DataStructuresDemo />} />
               </Route>
 
@@ -47,6 +51,7 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </Router>
+    </NavigationProvider>
     </ProductProvider>
   </AuthProvider>
   );

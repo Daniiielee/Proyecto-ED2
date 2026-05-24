@@ -2,11 +2,13 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import { useAuth } from '../../hooks/useAuth';
+import { useNavigation } from '../../context/NavigationContext';
 
 // Barra de navegación con lógica de autenticación
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
+  const { pushPage } = useNavigation();
 
   const handleLogout = async () => {
     try {
@@ -31,18 +33,23 @@ export const Navbar: React.FC = () => {
         {/* Enlaces de navegación */}
         <ul className={styles.navLinks}>
           <li>
-            <Link to="/" className={styles.link}>
+            <Link to="/" className={styles.link} onClick={() => pushPage('Inicio')}>
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="/products" className={styles.link}>
+            <Link to="/products" className={styles.link} onClick={() => pushPage('Productos')}>
               Productos
             </Link>
           </li>
           <li>
-            <Link to="/top-products" className={styles.link}>
+            <Link to="/top-products" className={styles.link} onClick={() => pushPage('Top Productos')}>
               Top Productos
+            </Link>
+          </li>
+          <li>
+            <Link to="/history" className={styles.link} onClick={() => pushPage('Historial')}>
+              Historial
             </Link>
           </li>
         </ul>
