@@ -61,14 +61,23 @@ export const Products: React.FC = () => {
     },
   ];
 
-  // Carga los datos de prueba agregando cada producto
+  // Carga los datos de prueba agregando solo los productos que no existen
   const handleLoadTestData = async () => {
     setIsLoadingTestData(true);
     try {
+      let addedCount = 0;
       for (const product of testProducts) {
+        const exists = products.some((p) => p.name === product.name);
+        if (exists) continue;
         await addProduct(product);
+        addedCount += 1;
       }
-      alert('Datos de prueba cargados exitosamente');
+
+      if (addedCount === 0) {
+        alert('Los datos de prueba ya están cargados');
+      } else {
+        alert(`Se agregaron ${addedCount} productos nuevos`);
+      }
     } catch (err) {
       alert('Error al cargar los datos de prueba');
       console.error(err);

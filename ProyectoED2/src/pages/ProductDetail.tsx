@@ -27,7 +27,7 @@ export const ProductDetail: React.FC = () => {
     if (currentProduct) {
       addToHistory(currentProduct);
     }
-  }, [currentProduct, addToHistory]);
+  }, [currentProduct?.id]);
 
   const handleBack = () => {
     navigate('/products');
