@@ -1,12 +1,12 @@
-@import '../../styles/_variables.scss';
-@import '../../styles/_mixins.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .footer {
-  background-color: $primary-color;
-  color: white;
-  padding: 2rem;
-  margin-top: 2rem;
-  @include shadow('md');
+  background-color: $primary;
+  color: $text-primary;
+  padding: $spacing-lg;
+  margin-top: $spacing-xl;
+  box-shadow: $shadow-md;
 
   .container {
     display: flex;

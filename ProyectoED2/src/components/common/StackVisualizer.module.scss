@@ -1,73 +1,16 @@
-@import '../../styles/_variables.scss';
-@import '../../styles/_mixins.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
-.container {
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
+.container { padding: $spacing-md; background: $surface-light; border-radius: $border-radius; margin-bottom: $spacing-lg; }
+.title { margin: 0 0 $spacing-md 0; font-size: $font-size-base; font-weight: 700; }
+.empty { padding: $spacing-md; text-align: center; color: $text-secondary; font-style: italic; }
+.stackWrapper { display: flex; justify-content: center; padding: $spacing-md 0; }
+.stack { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
 
-.title {
-  margin: 0 0 1rem 0;
-  font-size: 1rem;
-  font-weight: 700;
-}
+.box { display: flex; align-items: center; justify-content: center; width: 150px; height: 50px; border: 2px solid $border; background: $text-primary; font-weight: 600; font-size: 0.9rem; position: relative; }
 
-.empty {
-  padding: 1rem;
-  text-align: center;
-  color: #94a3b8;
-  font-style: italic;
-}
+.topBox { border-color: $primary; border-width: 3px; background: rgba($primary, 0.05); }
 
-.stackWrapper {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-}
+.topLabel { position: absolute; top: -22px; left: 0; right: 0; text-align: center; font-size: 0.75rem; font-weight: 700; color: $primary; }
 
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: stretch;
-}
-
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 50px;
-  border: 2px solid #cbd5e1;
-  background: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  position: relative;
-}
-
-.topBox {
-  border-color: $primary-color;
-  border-width: 3px;
-  background: rgba($primary-color, 0.05);
-}
-
-.topLabel {
-  position: absolute;
-  top: -22px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: $primary-color;
-}
-
-.boxContent {
-  text-align: center;
-  word-break: break-word;
-  max-width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.boxContent { text-align: center; word-break: break-word; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }

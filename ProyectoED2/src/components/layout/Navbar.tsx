@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import { useAuth } from '../../hooks/useAuth';
@@ -6,6 +6,7 @@ import { useNavigation } from '../../context/NavigationContext';
 
 // Barra de navegación con lógica de autenticación
 export const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
   const { pushPage } = useNavigation();
@@ -31,29 +32,39 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Enlaces de navegación */}
-        <ul className={styles.navLinks}>
+        <button
+          className={styles.hamburger}
+          aria-label="Toggle menu"
+          onClick={() => setMenuOpen((s) => !s)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <ul className={`${styles.navLinks} ${menuOpen ? styles.openNav : ''}`}>
           <li>
-            <Link to="/" className={styles.link} onClick={() => pushPage('Inicio')}>
+            <Link to="/" className={styles.link} onClick={() => { pushPage('Inicio'); setMenuOpen(false); }}>
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="/products" className={styles.link} onClick={() => pushPage('Productos')}>
+            <Link to="/products" className={styles.link} onClick={() => { pushPage('Productos'); setMenuOpen(false); }}>
               Productos
             </Link>
           </li>
           <li>
-            <Link to="/top-products" className={styles.link} onClick={() => pushPage('Top Productos')}>
+            <Link to="/top-products" className={styles.link} onClick={() => { pushPage('Top Productos'); setMenuOpen(false); }}>
               Top Productos
             </Link>
           </li>
           <li>
-            <Link to="/history" className={styles.link} onClick={() => pushPage('Historial')}>
+            <Link to="/history" className={styles.link} onClick={() => { pushPage('Historial'); setMenuOpen(false); }}>
               Historial
             </Link>
           </li>
           <li>
-            <Link to="/chat" className={styles.link} onClick={() => pushPage('Chat')}>
+            <Link to="/chat" className={styles.link} onClick={() => { pushPage('Chat'); setMenuOpen(false); }}>
               Chat
             </Link>
           </li>

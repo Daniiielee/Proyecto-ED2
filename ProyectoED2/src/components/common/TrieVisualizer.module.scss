@@ -1,58 +1,11 @@
-@import '../../styles/_variables.scss';
-@import '../../styles/_mixins.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
-.container {
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 8px;
-}
-
-.title {
-  margin: 0 0 1rem 0;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.section {
-  margin-bottom: 1rem;
-}
-
-.sectionTitle {
-  margin: 0 0 0.75rem 0;
-  color: $primary-color;
-  font-size: 0.95rem;
-}
-
-.wordList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
-}
-
-.wordItem,
-.suggestionItem {
-  padding: 0.65rem 0.85rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  background: white;
-  color: #1f2937;
-  font-size: 0.9rem;
-}
-
-.suggestionItem {
-  border-color: $primary-color;
-  background: rgba($primary-color, 0.08);
-}
-
-.empty {
-  padding: 0.9rem;
-  color: #94a3b8;
-  background: #ffffff;
-  border: 1px dashed #cbd5e1;
-  border-radius: 6px;
-  text-align: center;
-  font-style: italic;
-}
+.container { padding: $spacing-md; background: $surface; border-radius: $border-radius; }
+.title { margin: 0 0 $spacing-md 0; font-size: $font-size-base; font-weight: 700; }
+.section { margin-bottom: $spacing-md; }
+.sectionTitle { margin: 0 0 0.75rem 0; color: $primary; font-size: $font-size-sm; }
+.wordList { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; }
+.wordItem, .suggestionItem { padding: 0.65rem 0.85rem; border: 1px solid $border; border-radius: $border-radius; background: $text-primary; color: $secondary; font-size: 0.9rem; }
+.suggestionItem { border-color: $primary; background: rgba($primary, 0.08); }
+.empty { padding: 0.9rem; color: $text-secondary; background: $text-primary; border: 1px dashed $border; border-radius: $border-radius; text-align: center; font-style: italic; }

@@ -1,5 +1,5 @@
-@import '../styles/_variables.scss';
-@import '../styles/_mixins.scss';
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
 
 .home {
   min-height: 100vh;
@@ -8,12 +8,12 @@
 .hero {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-  color: white;
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: $text-primary;
   border-radius: 0.5rem;
   margin-bottom: 4rem;
 
-  @include responsive('md') {
+  @include tablet {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
   }
@@ -25,7 +25,7 @@
   margin-bottom: 1rem;
   letter-spacing: -1px;
 
-  @include responsive('md') {
+  @include tablet {
     font-size: $font-size-xl;
   }
 }
@@ -34,7 +34,7 @@
   font-size: $font-size-lg;
   opacity: 0.9;
 
-  @include responsive('md') {
+  @include tablet {
     font-size: $font-size-base;
   }
 }
@@ -47,9 +47,9 @@
   font-size: $font-size-xl;
   margin-bottom: 2rem;
   text-align: center;
-  color: $text-color;
+  color: $text-primary;
 
-  @include responsive('md') {
+  @include tablet {
     font-size: $font-size-lg;
     margin-bottom: 1.5rem;
   }
@@ -60,18 +60,18 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 
-  @include responsive('md') {
+  @include tablet {
     gap: 1rem;
   }
 
-  @include responsive('sm') {
+  @include mobile {
     grid-template-columns: 1fr;
   }
 }
 
 .card {
-  background-color: white;
-  border-radius: 0.5rem;
+  background-color: $surface;
+  border-radius: $border-radius;
   padding: 2rem;
   text-align: center;
   @include shadow('md');
@@ -91,11 +91,11 @@
 .cardTitle {
   font-size: $font-size-lg;
   margin-bottom: 0.5rem;
-  color: $primary-color;
+  color: $primary;
 }
 
 .cardDescription {
   font-size: $font-size-sm;
-  color: darken($background-color, 40%);
+  color: $text-muted;
   line-height: 1.6;
 }
