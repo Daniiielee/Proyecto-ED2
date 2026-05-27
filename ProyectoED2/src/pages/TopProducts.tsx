@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './TopProducts.module.scss';
 import { useTopProducts } from '../hooks/useTopProducts';
 
-// Página que muestra los productos mejor valorados usando Heap
 export const TopProducts: React.FC = () => {
   const { topProducts, loading } = useTopProducts();
   const priceFormatter = new Intl.NumberFormat('es-CO', {

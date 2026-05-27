@@ -6,7 +6,6 @@ import useRecommendations from '../hooks/useRecommendations';
 import type { Product } from '../types';
 import styles from './ProductDetail.module.scss';
 
-// Página de detalle de un producto con historial reciente
 export const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();

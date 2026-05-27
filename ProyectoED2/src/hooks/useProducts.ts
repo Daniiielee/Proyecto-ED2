@@ -12,13 +12,11 @@ import {
 import { db } from '../firebase/firebase';
 import type { Product } from '../types';
 
-// Hook personalizado para operaciones CRUD con Firestore
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Carga todos los productos de Firestore ordenados por nombre
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -46,7 +44,6 @@ export const useProducts = () => {
     }
   };
 
-  // Agrega un nuevo producto a Firestore
   const addProduct = async (product: Omit<Product, 'id'>) => {
     try {
       setLoading(true);
@@ -55,7 +52,6 @@ export const useProducts = () => {
       const productsRef = collection(db, 'products');
       const docRef = await addDoc(productsRef, product);
 
-      // Agregar el nuevo producto a la lista local
       setProducts([...products, { id: docRef.id, ...product }]);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Error al agregar producto';
@@ -67,7 +63,6 @@ export const useProducts = () => {
     }
   };
 
-  // Actualiza un producto existente en Firestore
   const updateProduct = async (id: string, data: Partial<Product>) => {
     try {
       setLoading(true);
@@ -76,7 +71,6 @@ export const useProducts = () => {
       const productRef = doc(db, 'products', id);
       await updateDoc(productRef, data);
 
-      // Actualizar en la lista local
       setProducts(
         products.map((p) => (p.id === id ? { ...p, ...data } : p))
       );
@@ -90,7 +84,6 @@ export const useProducts = () => {
     }
   };
 
-  // Elimina un producto de Firestore
   const deleteProduct = async (id: string) => {
     try {
       setLoading(true);
@@ -99,7 +92,6 @@ export const useProducts = () => {
       const productRef = doc(db, 'products', id);
       await deleteDoc(productRef);
 
-      // Eliminar de la lista local
       setProducts(products.filter((p) => p.id !== id));
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Error al eliminar producto';
@@ -111,7 +103,6 @@ export const useProducts = () => {
     }
   };
 
-  // Al montar el componente, cargar productos
   useEffect(() => {
     fetchProducts();
   }, []);

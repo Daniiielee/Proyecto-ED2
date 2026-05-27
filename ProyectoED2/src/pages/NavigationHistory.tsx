@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import styles from './NavigationHistory.module.scss';
 import { useNavigation } from '../context/NavigationContext';
 
-// Página para mostrar el historial de navegación usando Stack
 export const NavigationHistory: React.FC = () => {
   const { history, popPage, getCurrentPage } = useNavigation();
   const navigate = useNavigate();

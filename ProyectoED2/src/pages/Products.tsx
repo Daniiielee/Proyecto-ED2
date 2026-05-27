@@ -6,18 +6,14 @@ import { ProductForm } from '../components/common/ProductForm';
 import type { Product } from '../types';
 import { useSearch } from '../hooks/useSearch';
 
-// Página de listado de productos desde Firestore
 export const Products: React.FC = () => {
   const { products, loading, error, addProduct } = useProducts();
   const [showForm, setShowForm] = useState<boolean>(false);
   const [isLoadingTestData, setIsLoadingTestData] = useState<boolean>(false);
-  // Hook de búsqueda que usa Trie internamente
   const { suggestions, searchTerm, initializeTrie, handleSearch, clearSearch } = useSearch();
 
-  // Estado local para resultados filtrados por búsqueda
   const [filteredBySearch, setFilteredBySearch] = useState<Product[]>([]);
 
-  // Datos de prueba académicos para demostración
   const testProducts: Omit<Product, 'id'>[] = [
     {
       name: 'Laptop HP Pavilion',
@@ -61,7 +57,6 @@ export const Products: React.FC = () => {
     },
   ];
 
-  // Carga los datos de prueba agregando solo los productos que no existen
   const handleLoadTestData = async () => {
     setIsLoadingTestData(true);
     try {
@@ -86,7 +81,6 @@ export const Products: React.FC = () => {
     }
   };
 
-  // Maneja el envío del formulario
   const handleFormSubmit = async (product: Omit<Product, 'id'>) => {
     try {
       await addProduct(product);
@@ -97,14 +91,12 @@ export const Products: React.FC = () => {
     }
   };
 
-  // Inicializar el Trie cuando cambian los productos
   useEffect(() => {
     if (products && products.length > 0) {
       initializeTrie(products.map((p) => p.name));
     }
   }, [products, initializeTrie]);
 
-  // Actualizar listado filtrado cuando cambia el término de búsqueda o los productos
   useEffect(() => {
     if (!searchTerm || searchTerm.trim() === '') {
       setFilteredBySearch(products);
@@ -116,16 +108,13 @@ export const Products: React.FC = () => {
     }
   }, [searchTerm, products]);
 
-  // Determinar qué productos mostrar según el término de búsqueda
   const displayedProducts = searchTerm && searchTerm.trim() !== '' ? filteredBySearch : products;
 
   return (
     <div className={styles.container}>
-      {/* Encabezado */}
       <div className={styles.header}>
         <h1 className={styles.title}>Productos TechStore DS</h1>
         <div className={styles.actions}>
-          {/* Botón agregar producto */}
           <button
             className={styles.addBtn}
             onClick={() => setShowForm(true)}
@@ -134,7 +123,6 @@ export const Products: React.FC = () => {
             + Agregar producto
           </button>
 
-          {/* Botón cargar datos de prueba (temporal) */}
           <button
             className={styles.testDataBtn}
             onClick={handleLoadTestData}
@@ -145,7 +133,6 @@ export const Products: React.FC = () => {
         </div>
       </div>
 
-      {/* Sección de búsqueda (Trie) */}
       <div className={styles.searchSection}>
         <div className={styles.searchWrapper}>
           <input
@@ -170,20 +157,16 @@ export const Products: React.FC = () => {
         </div>
       </div>
 
-      {/* Mostrar estado de carga */}
       {loading && <p className={styles.loading}>Cargando productos...</p>}
 
-      {/* Mostrar errores */}
       {error && <p className={styles.error}>Error: {error}</p>}
 
-      {/* Mostrar mensaje si no hay productos (considerando búsqueda) */}
       {!loading && !error && displayedProducts.length === 0 && (
         <p className={styles.empty}>
           No hay productos que coincidan con la búsqueda.
         </p>
       )}
 
-      {/* Grid de productos */}
       {!loading && !error && displayedProducts.length > 0 && (
         <div className={styles.grid}>
           {displayedProducts.map((product) => (
@@ -192,7 +175,6 @@ export const Products: React.FC = () => {
         </div>
       )}
 
-      {/* Modal del formulario */}
       {showForm && (
         <ProductForm
           onClose={() => setShowForm(false)}

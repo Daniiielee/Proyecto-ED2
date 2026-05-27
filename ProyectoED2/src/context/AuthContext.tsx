@@ -11,7 +11,6 @@ import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 import type { User } from '../types';
 
-// Tipo de contexto para autenticación
 export interface AuthContextType {
   currentUser: User | null;
   loading: boolean;
@@ -30,13 +29,11 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-// Proveedor de contexto de autenticación
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Escucha los cambios de estado de autenticación
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
         setCurrentUser({
@@ -54,12 +51,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // Iniciar sesión con correo y contraseña
   const login = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Registrar nuevo usuario y guardar datos en Firestore
   const register = async (
     email: string,
     password: string,
@@ -80,7 +75,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     });
   };
 
-  // Cerrar sesión del usuario
   const logout = async () => {
     await signOut(auth);
   };
@@ -92,7 +86,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-// Hook personalizado para acceder al contexto de autenticación
 export const useAuth = () => {
   const context = useContext(AuthContext);
 

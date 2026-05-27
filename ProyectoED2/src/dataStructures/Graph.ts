@@ -1,6 +1,3 @@
-// Estructura: Grafo no dirigido con pesos
-// Uso en proyecto: recomendaciones de productos por categoría
-
 class GraphVertex<T> {
   value: T;
 

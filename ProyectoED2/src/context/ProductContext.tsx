@@ -3,7 +3,6 @@ import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import type { Product } from '../types';
 
-// Tipo de contexto para productos en toda la aplicación
 export interface ProductContextType {
   products: Product[];
   loading: boolean;
@@ -22,7 +21,6 @@ interface ProductProviderProps {
   children: React.ReactNode;
 }
 
-// Provider que mantiene el estado global de productos
 export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,7 +28,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Filtra productos por categoría y texto de búsqueda
   const filteredProducts = products.filter((product) => {
     const matchCategory =
       selectedCategory === 'Todos' || selectedCategory.trim() === ''
@@ -42,7 +39,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     return matchCategory && matchSearch;
   });
 
-  // Carga los productos desde Firestore
   const refreshProducts = async () => {
     try {
       setLoading(true);
@@ -90,7 +86,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   );
 };
 
-// Hook para consumir el contexto de productos desde cualquier componente
 export const useProducts = (): ProductContextType => {
   const context = useContext(ProductContext);
   if (!context) {

@@ -18,7 +18,6 @@ import Chat from './pages/Chat';
 import PrivateRoute from './components/common/PrivateRoute';
 import './styles/global.scss';
 
-// Componente principal de la aplicación
 const App: React.FC = () => {
   return (
     <AuthProvider>
@@ -30,12 +29,10 @@ const App: React.FC = () => {
 
             <main style={{ flex: 1 }}>
               <Routes>
-              {/* Rutas públicas: accesibles sin autenticación */}
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
 
-              {/* Rutas privadas: requieren autenticación. Envolvemos con PrivateRoute */}
               <Route element={<PrivateRoute />}>
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
@@ -45,7 +42,6 @@ const App: React.FC = () => {
                 <Route path="/chat" element={<Chat />} />
               </Route>
 
-              {/* Ruta 404 */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
