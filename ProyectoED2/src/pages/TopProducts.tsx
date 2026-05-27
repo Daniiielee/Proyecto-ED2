@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './TopProducts.module.scss';
 import { useTopProducts } from '../hooks/useTopProducts';
 
-// Página que muestra los productos mejor valorados usando Heap
 export const TopProducts: React.FC = () => {
   const { topProducts, loading } = useTopProducts();
   const priceFormatter = new Intl.NumberFormat('es-CO', {
@@ -15,10 +14,9 @@ export const TopProducts: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <h1 className={styles.title}>🏆 Top Productos</h1>
+          <h1 className={styles.title}>Top Productos</h1>
           <p className={styles.subtitle}>Los productos mejor valorados</p>
         </div>
-        <span className={styles.badge}>Estructura: Heap (Max-Heap)</span>
       </header>
 
       {loading ? (

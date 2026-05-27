@@ -1,6 +1,3 @@
-// Estructura de datos: Heap (Montículo)
-// Uso en proyecto: top productos más populares por rating
-
 class Heap<T> {
   private items: T[];
   private comparator: (a: T, b: T) => number;
@@ -10,13 +7,11 @@ class Heap<T> {
     this.comparator = comparator;
   }
 
-  // Insertar elemento y reorganizar el heap
   insert(element: T): void {
     this.items.push(element);
     this.heapifyUp(this.items.length - 1);
   }
 
-  // Extraer el elemento con mayor prioridad
   extractMax(): T | undefined {
     if (this.items.length === 0) {
       return undefined;
@@ -33,12 +28,10 @@ class Heap<T> {
     return max;
   }
 
-  // Ver el elemento con mayor prioridad sin removerlo
   peek(): T | undefined {
     return this.items[0];
   }
 
-  // Obtener todos los elementos ordenados sin modificar el heap original
   getSorted(): T[] {
     const heapCopy = this.clone();
     const sorted: T[] = [];
@@ -53,17 +46,14 @@ class Heap<T> {
     return sorted;
   }
 
-  // Obtener tamaño del heap
   getSize(): number {
     return this.items.length;
   }
 
-  // Verificar si el heap está vacío
   isEmpty(): boolean {
     return this.items.length === 0;
   }
 
-  // Reorganizar hacia arriba después de insertar
   private heapifyUp(index: number): void {
     let currentIndex = index;
 
@@ -77,7 +67,6 @@ class Heap<T> {
     }
   }
 
-  // Reorganizar hacia abajo después de extraer el máximo
   private heapifyDown(index: number): void {
     let currentIndex = index;
     const length = this.items.length;
@@ -102,14 +91,12 @@ class Heap<T> {
     }
   }
 
-  // Clonar el heap para obtener elementos ordenados sin mutar el original
   private clone(): Heap<T> {
     const copy = new Heap<T>(this.comparator);
     copy.items = [...this.items];
     return copy;
   }
 
-  // Intercambiar dos elementos dentro del array
   private swap(i: number, j: number): void {
     const temp = this.items[i];
     this.items[i] = this.items[j];

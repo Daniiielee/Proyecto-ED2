@@ -3,7 +3,6 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database';
 
-// Inicialización de Firebase para TechStore DS
 const firebaseConfig = {
   apiKey: 'AIzaSyDjkMYLXVJjvTwWXctwouLislMjz3KQbCo',
   authDomain: 'techstore-ds.firebaseapp.com',
@@ -15,9 +14,6 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-// Exportamos auth para autenticación de usuarios
 export const auth = getAuth(app);
-// Exportamos db para Firestore (productos, usuarios)
 export const db = getFirestore(app);
-// Exportamos realtimeDb para chat en tiempo real
 export const realtimeDb = getDatabase(app);

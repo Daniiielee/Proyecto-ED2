@@ -1,9 +1,3 @@
-// Estructura de datos: Lista Enlazada
-// Uso en proyecto: historial de productos visitados recientemente
-
-/**
- * Nodo genérico para la lista enlazada
- */
 class NodeLL<T> {
   data: T;
   next: NodeLL<T> | null;
@@ -14,11 +8,6 @@ class NodeLL<T> {
   }
 }
 
-/**
- * Lista Enlazada (LinkedList)
- * Estructura lineal de nodos enlazados
- * Utilidad: Mantener historial de navegación y búsquedas
- */
 class LinkedList<T> {
   private head: NodeLL<T> | null;
   private tail: NodeLL<T> | null;
@@ -30,9 +19,6 @@ class LinkedList<T> {
     this.size = 0;
   }
 
-  /**
-   * Agregar elemento al final de la lista
-   */
   append(data: T): void {
     const newNode = new NodeLL(data);
     if (this.isEmpty()) {
@@ -47,9 +33,6 @@ class LinkedList<T> {
     this.size++;
   }
 
-  /**
-   * Agregar elemento al inicio de la lista
-   */
   prepend(data: T): void {
     const newNode = new NodeLL(data);
     if (this.isEmpty()) {
@@ -62,13 +45,9 @@ class LinkedList<T> {
     this.size++;
   }
 
-  /**
-   * Eliminar elemento por valor
-   */
   remove(data: T): boolean {
     if (this.isEmpty()) return false;
 
-    // Si el nodo a eliminar es la cabeza
     if (this.head && this.head.data === data) {
       this.head = this.head.next;
       if (this.size === 1) {
@@ -78,7 +57,6 @@ class LinkedList<T> {
       return true;
     }
 
-    // Buscar en el resto de la lista
     let current = this.head;
     while (current && current.next) {
       if (current.next.data === data) {
@@ -94,9 +72,6 @@ class LinkedList<T> {
     return false;
   }
 
-  /**
-   * Obtener elemento en posición específica
-   */
   getAt(index: number): T | null {
     if (index < 0 || index >= this.size) return null;
 
@@ -109,9 +84,6 @@ class LinkedList<T> {
     return current ? current.data : null;
   }
 
-  /**
-   * Obtener todos los elementos como array
-   */
   toArray(): T[] {
     const arr: T[] = [];
     let current = this.head;
@@ -122,32 +94,20 @@ class LinkedList<T> {
     return arr;
   }
 
-  /**
-   * Obtener tamaño de la lista
-   */
   getSize(): number {
     return this.size;
   }
 
-  /**
-   * Verificar si la lista está vacía
-   */
   isEmpty(): boolean {
     return this.size === 0;
   }
 
-  /**
-   * Limpiar la lista completa
-   */
   clear(): void {
     this.head = null;
     this.tail = null;
     this.size = 0;
   }
 
-  /**
-   * Imprimir lista en consola (para debugging)
-   */
   print(): void {
     const items: T[] = [];
     let current = this.head;

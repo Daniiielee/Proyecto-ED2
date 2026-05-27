@@ -3,7 +3,6 @@ import { Heap } from '../dataStructures/Heap';
 import type { Product } from '../types';
 import { useProducts } from './useProducts';
 
-// Hook personalizado para obtener los productos mejor valorados
 export const useTopProducts = () => {
   const { products, loading } = useProducts();
   const [topProducts, setTopProducts] = useState<Product[]>([]);

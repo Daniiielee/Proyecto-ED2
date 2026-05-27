@@ -23,10 +23,8 @@ const Chat: React.FC = () => {
     <div className={styles.chatPage}>
       <header className={styles.header}>
         <div>
-          <h1 className={styles.title}>💬 Chat en Tiempo Real</h1>
-          <p className={styles.subtitle}>Mensajes gestionados con Queue (FIFO)</p>
+          <h1 className={styles.title}>Chat</h1>
         </div>
-        <span className={styles.badge}>Estructura: Queue (FIFO)</span>
       </header>
 
       <section className={styles.chatContainer}>
@@ -75,10 +73,6 @@ const Chat: React.FC = () => {
           Enviar
         </button>
       </form>
-
-      <p className={styles.note}>
-        Queue gestiona mensajes FIFO: primer mensaje en entrar, primero en mostrarse.
-      </p>
     </div>
   );
 };

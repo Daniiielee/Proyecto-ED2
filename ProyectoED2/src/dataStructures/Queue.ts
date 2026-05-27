@@ -1,6 +1,3 @@
-// Estructura: Cola (Queue) - FIFO
-// Uso en proyecto: cola de mensajes del chat
-
 class NodeQueue<T> {
   data: T;
   next: NodeQueue<T> | null;
@@ -22,9 +19,6 @@ class Queue<T> {
     this.size = 0;
   }
 
-  /**
-   * Agregar elemento al final de la cola
-   */
   enqueue(data: T): void {
     const newNode = new NodeQueue(data);
     if (this.isEmpty()) {
@@ -39,9 +33,6 @@ class Queue<T> {
     this.size++;
   }
 
-  /**
-   * Remover y retornar elemento del frente
-   */
   dequeue(): T | undefined {
     if (this.isEmpty() || !this.front) return undefined;
 
@@ -54,30 +45,18 @@ class Queue<T> {
     return data;
   }
 
-  /**
-   * Ver frente sin remover
-   */
   peek(): T | undefined {
     return this.front ? this.front.data : undefined;
   }
 
-  /**
-   * Verificar si está vacía
-   */
   isEmpty(): boolean {
     return this.size === 0;
   }
 
-  /**
-   * Obtener tamaño
-   */
   getSize(): number {
     return this.size;
   }
 
-  /**
-   * Obtener todos los elementos como array
-   */
   toArray(): T[] {
     const result: T[] = [];
     let current = this.front;
@@ -88,18 +67,12 @@ class Queue<T> {
     return result;
   }
 
-  /**
-   * Limpiar la cola
-   */
   clear(): void {
     this.front = null;
     this.rear = null;
     this.size = 0;
   }
 
-  /**
-   * Imprimir en consola
-   */
   print(): void {
     const items: T[] = [];
     let current = this.front;

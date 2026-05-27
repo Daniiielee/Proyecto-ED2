@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Home.module.scss';
 
-// Página de inicio del marketplace
 export const Home: React.FC = () => {
   return (
     <div className={styles.home}>
@@ -16,7 +15,6 @@ export const Home: React.FC = () => {
         <h2 className={styles.sectionTitle}>Características principales</h2>
         
         <div className={styles.cardsContainer}>
-          {/* Card 1: Búsqueda Inteligente */}
           <div className={styles.card}>
             <div className={styles.cardIcon}>🔍</div>
             <h3 className={styles.cardTitle}>Búsqueda Inteligente</h3>
@@ -25,7 +23,6 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Card 2: Historial */}
           <div className={styles.card}>
             <div className={styles.cardIcon}>📋</div>
             <h3 className={styles.cardTitle}>Historial</h3>
@@ -34,7 +31,6 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Card 3: Recomendaciones */}
           <div className={styles.card}>
             <div className={styles.cardIcon}>⭐</div>
             <h3 className={styles.cardTitle}>Recomendaciones</h3>
