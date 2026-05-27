@@ -101,7 +101,6 @@ export const ProductDetail: React.FC = () => {
       <section className={styles.historySection}>
         <div className={styles.historyHeader}>
           <h2 className={styles.historyTitle}>Vistos recientemente</h2>
-          <span className={styles.historyBadge}>(LinkedList)</span>
         </div>
 
         {recentProducts.length === 0 ? (
@@ -121,7 +120,6 @@ export const ProductDetail: React.FC = () => {
       <section className={styles.recommendationsSection}>
         <div className={styles.recommendationsHeader}>
           <h2 className={styles.recommendationsTitle}>Productos recomendados</h2>
-          <span className={styles.recommendationsBadge}>(Grafo)</span>
         </div>
         <p className={styles.recommendationsSubtitle}>Basado en categoría y valoración</p>
 

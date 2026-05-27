@@ -15,10 +15,9 @@ export const TopProducts: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <h1 className={styles.title}>🏆 Top Productos</h1>
+          <h1 className={styles.title}>Top Productos</h1>
           <p className={styles.subtitle}>Los productos mejor valorados</p>
         </div>
-        <span className={styles.badge}>Estructura: Heap (Max-Heap)</span>
       </header>
 
       {loading ? (

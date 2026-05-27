@@ -150,11 +150,10 @@ export const Products: React.FC = () => {
         <div className={styles.searchWrapper}>
           <input
             className={styles.searchInput}
-            placeholder="Buscar productos... (Trie)"
+            placeholder="Buscar productos..."
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
           />
-          <span className={styles.searchBadge}>Estructura: Trie</span>
           {searchTerm && searchTerm.trim() !== '' && (
             <button className={styles.clearBtn} onClick={clearSearch} aria-label="Limpiar búsqueda">X</button>
           )}

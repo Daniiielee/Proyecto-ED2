@@ -38,10 +38,9 @@ export const NavigationHistory: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <h1 className={styles.title}>📋 Historial de Navegación</h1>
+          <h1 className={styles.title}>Historial</h1>
           <p className={styles.subtitle}>Páginas visitadas en esta sesión</p>
         </div>
-        <span className={styles.badge}>Estructura: Stack (LIFO)</span>
       </header>
 
       {history.length === 0 ? (
@@ -64,10 +63,6 @@ export const NavigationHistory: React.FC = () => {
       <button className={styles.backBtn} onClick={handleBack} disabled={history.length === 0}>
         ← Volver atrás
       </button>
-
-      <p className={styles.note}>
-        Stack usa LIFO: último en entrar, primero en salir.
-      </p>
     </div>
   );
 };
