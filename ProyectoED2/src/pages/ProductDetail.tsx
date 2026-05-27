@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProducts } from '../hooks/useProducts';
 import { useProductHistory } from '../hooks/useProductHistory';
+import useRecommendations from '../hooks/useRecommendations';
 import type { Product } from '../types';
 import styles from './ProductDetail.module.scss';
 
@@ -11,7 +12,9 @@ export const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const { products, loading } = useProducts();
   const { recentProducts, addToHistory } = useProductHistory();
+  const { buildGraph, getRecommendations, graphBuilt } = useRecommendations();
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     if (!id) {
@@ -28,6 +31,24 @@ export const ProductDetail: React.FC = () => {
       addToHistory(currentProduct);
     }
   }, [currentProduct?.id]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      buildGraph(products);
+    }
+  }, [products, buildGraph]);
+
+  useEffect(() => {
+    if (currentProduct && graphBuilt) {
+      const recommendedIds = getRecommendations(currentProduct.id, 4);
+      const relatedProducts = products.filter(
+        (product) => product.id !== currentProduct.id && recommendedIds.includes(product.id)
+      );
+      setRecommendedProducts(relatedProducts);
+    } else {
+      setRecommendedProducts([]);
+    }
+  }, [currentProduct, graphBuilt, products, getRecommendations]);
 
   const handleBack = () => {
     navigate('/products');
@@ -91,6 +112,36 @@ export const ProductDetail: React.FC = () => {
               <article key={product.id} className={styles.historyCard}>
                 <h3>{product.name}</h3>
                 <p>$ {product.price.toLocaleString()}</p>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className={styles.recommendationsSection}>
+        <div className={styles.recommendationsHeader}>
+          <h2 className={styles.recommendationsTitle}>Productos recomendados</h2>
+          <span className={styles.recommendationsBadge}>(Grafo)</span>
+        </div>
+        <p className={styles.recommendationsSubtitle}>Basado en categoría y valoración</p>
+
+        {recommendedProducts.length === 0 ? (
+          <p className={styles.emptyRecommendations}>Sin recomendaciones disponibles</p>
+        ) : (
+          <div className={styles.recommendationsGrid}>
+            {recommendedProducts.map((product) => (
+              <article
+                key={product.id}
+                className={styles.recommendationCard}
+                onClick={() => navigate(`/products/${product.id}`)}
+              >
+                <img
+                  className={styles.recImage}
+                  src={product.imageUrl}
+                  alt={product.name}
+                />
+                <h3 className={styles.recName}>{product.name}</h3>
+                <p className={styles.recPrice}>$ {product.price.toLocaleString()}</p>
               </article>
             ))}
           </div>
