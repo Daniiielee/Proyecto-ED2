@@ -1,0 +1,11 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container { padding: $spacing-md; background: $surface; border-radius: $border-radius; margin-bottom: $spacing-md; }
+.title { margin: 0 0 $spacing-md 0; font-size: $font-size-base; font-weight: 700; }
+.empty { padding: $spacing-md; color: $text-secondary; text-align: center; font-style: italic; }
+.queueWrapper { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.label { font-weight: 700; color: $primary; }
+.queueList { display: flex; align-items: center; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
+.node { min-width: 80px; padding: 0.75rem 1rem; border: 2px solid $primary; border-radius: $border-radius; background: $text-primary; text-align: center; font-weight: 600; color: $secondary; flex-shrink: 0; }
+.arrow { font-size: 1.25rem; color: $primary; font-weight: 700; flex-shrink: 0; }

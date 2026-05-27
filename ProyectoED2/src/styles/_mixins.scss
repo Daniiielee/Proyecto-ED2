@@ -1,0 +1,93 @@
+@use 'variables' as *;
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: 480px) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) { @content; }
+}
+
+// Card base
+@mixin card {
+  background-color: $surface;
+  border-radius: $border-radius-lg;
+  border: 1px solid $border;
+  padding: $spacing-lg;
+  transition: transform $transition-base, box-shadow $transition-base;
+}
+
+// Shadow helper (legacy compatibility)
+@mixin shadow($size: 'sm') {
+  @if $size == 'sm' {
+    box-shadow: $shadow-sm;
+  } @else if $size == 'md' {
+    box-shadow: $shadow-md;
+  } @else if $size == 'lg' {
+    box-shadow: $shadow-lg;
+  } @else {
+    box-shadow: $shadow-sm;
+  }
+}
+
+// Botón primario
+@mixin btn-primary {
+  background-color: $primary;
+  color: $text-primary;
+  border: none;
+  border-radius: $border-radius;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  &:hover { background-color: $primary-dark; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+// Transition helper
+@mixin transition($property, $duration: $transition-fast, $timing: ease) {
+  transition: #{$property} $duration $timing;
+}
+
+// Badge académico
+@mixin badge($color: $primary) {
+  display: inline-block;
+  background-color: rgba($color, 0.15);
+  color: $color;
+  border: 1px solid rgba($color, 0.3);
+  border-radius: $border-radius-full;
+  padding: 2px $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: 600;
+}
+
+// Truncar texto
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  background: $surface;
+  border: 1px solid $border;
+}
+
+.title {
+  color: $text-secondary;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.empty {
+  text-align: center;
+  color: $text-secondary;
+  padding: $spacing-md 0;
+}
+
+.levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.level {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+}
+
+.node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid $primary;
+  background: $surface-light;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: $font-size-sm;
+  position: relative;
+}
+
+.nodeRoot {
+  @extend .node;
+  background: $primary;
+  color: white;
+  border-color: $primary-dark;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  background: $primary-light;
+  color: $text-primary;
+  padding: 2px 6px;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: 700;
+}

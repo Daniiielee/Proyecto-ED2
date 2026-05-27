@@ -1,0 +1,131 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  background-color: $secondary;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: $shadow-md;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: stretch;
+    padding: $spacing-sm $spacing-md;
+    min-height: auto;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: 800;
+  color: $text-primary;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  list-style: none;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.link {
+  color: $text-primary;
+  font-weight: 500;
+  transition: color $transition-fast;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.openNav {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: $spacing-md 0;
+    gap: $spacing-sm;
+  }
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @include tablet {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: $spacing-sm;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.userText {
+  color: $text-primary;
+  font-size: $font-size-sm;
+}
+
+.userName {
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.logoutBtn {
+  @include btn-primary;
+  font-size: $font-size-xs;
+  padding: $spacing-xs $spacing-md;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: $text-primary;
+    border-radius: 2px;
+    transition: all $transition-fast;
+  }
+
+  @include tablet {
+    display: flex;
+  }
+}

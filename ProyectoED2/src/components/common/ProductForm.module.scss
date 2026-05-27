@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Overlay oscuro del modal
+.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 998; }
+
+// Contenedor principal del modal
+.modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: $surface; color: $text-primary; border-radius: $border-radius; box-shadow: $shadow-lg; z-index: 999; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+
+.header { display: flex; justify-content: space-between; align-items: center; padding: $spacing-lg; border-bottom: 1px solid $border; }
+.header h2 { margin: 0; font-size: $font-size-xl; color: $text-primary; }
+
+.closeBtn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: $text-secondary; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: $border-radius-sm; transition: all $transition-fast; }
+.closeBtn:hover { background: $surface-light; color: $text-primary; }
+
+.errorBox { background: rgba($error, 0.08); border: 1px solid rgba($error, 0.15); border-radius: $border-radius; padding: $spacing-md; margin: $spacing-md; }
+.errorBox ul { margin: 0; padding-left: 1.5rem; }
+.errorBox li { color: $error; font-size: $font-size-sm; margin: 0.25rem 0; }
+
+.form { padding: $spacing-lg; }
+.formGroup { margin-bottom: $spacing-md; }
+.formGroup label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: $text-primary; font-size: $font-size-sm; }
+
+.formGroup input, .formGroup select, .formGroup textarea { width: 100%; padding: $spacing-sm; border: 1px solid $border; border-radius: $border-radius; font-size: $font-size-base; color: $text-primary; background: $surface-light; transition: all $transition-fast; font-family: inherit; }
+.formGroup input:focus, .formGroup select:focus, .formGroup textarea:focus { outline: none; border-color: $primary; box-shadow: 0 0 0 3px rgba(59,130,246,0.06); }
+.formGroup ::placeholder { color: $border; }
+.formGroup textarea { resize: vertical; min-height: 80px; }
+.formGroup select { appearance: none; background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+
+.buttonGroup { display: flex; gap: $spacing-md; margin-top: $spacing-lg; padding-top: $spacing-md; border-top: 1px solid $border; }
+.cancelBtn { flex: 1; padding: $spacing-sm $spacing-md; border: 1px solid $border; border-radius: $border-radius; background: $text-primary; color: $secondary; font-weight: 500; cursor: pointer; }
+.cancelBtn:hover { background: $surface-light; border-color: $text-secondary; }
+.submitBtn { flex: 1; padding: $spacing-sm $spacing-md; border: none; border-radius: $border-radius; background: $primary; color: $text-primary; font-weight: 500; cursor: pointer; }
+.submitBtn:hover { background: $primary-dark; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(2,6,23,0.08); }

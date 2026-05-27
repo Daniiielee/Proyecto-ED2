@@ -1,0 +1,58 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: $font-main;
+  background-color: $background;
+  color: $text-primary;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: $primary-light;
+  text-decoration: none;
+  &:hover { text-decoration: underline; color: $primary-dark; }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button { font-family: $font-main; }
+
+input, textarea, select {
+  font-family: $font-main;
+  font-size: $font-size-base;
+}
+
+main {
+  flex: 1;
+  padding: $spacing-xl $spacing-md;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @include tablet {
+    padding: $spacing-lg $spacing-sm;
+  }
+}

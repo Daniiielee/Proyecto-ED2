@@ -1,0 +1,90 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.container { @include flex-column; gap: $spacing-2xl; }
+
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  h1 { font-size: $font-size-2xl; font-weight: 700; }
+
+  .actions { display: flex; gap: $spacing-sm; flex-wrap: wrap; }
+}
+
+.addBtn {
+  @include btn-primary;
+}
+
+.testDataBtn {
+  @include btn-primary;
+  background-color: $surface-light;
+  color: $text-primary;
+  &:hover { background-color: $surface; }
+}
+
+.clearBtn {
+  border: 1px solid $border;
+  background: $surface-light;
+  color: $text-primary;
+  border-radius: $border-radius;
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $surface;
+  }
+}
+
+.searchSection { @include flex-column; gap: $spacing-sm; position: relative; }
+
+.searchWrapper { position: relative; display: flex; align-items: center; gap: $spacing-sm; }
+
+.searchInput {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  color: $text-primary;
+  font-size: $font-size-base;
+  &:focus { outline: none; border-color: $primary; }
+  &::placeholder { color: $text-muted; }
+}
+
+.searchBadge { @include badge; }
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  z-index: 50;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: $shadow-md;
+}
+
+.suggestionItem { padding: $spacing-sm $spacing-md; cursor: pointer; color: $text-primary; &:hover { background-color: $surface-light; } }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: $spacing-lg;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.empty, .loading, .error, .errorMsg {
+  text-align: center;
+  padding: $spacing-2xl;
+  color: $text-secondary;
+  font-size: $font-size-lg;
+}
+

@@ -1,0 +1,80 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.registerContainer {
+  @include flex-column;
+  gap: $spacing-md;
+  min-height: calc(100vh - 64px);
+  padding: $spacing-md;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.registerContainer > h2,
+.registerContainer > p {
+  width: 100%;
+  max-width: 420px;
+}
+
+.form {
+  @include card;
+  width: 100%;
+  max-width: 420px;
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.form h2 {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  text-align: center;
+  color: $text-primary;
+}
+
+.form p {
+  text-align: center;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  background-color: $surface-light;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  color: $text-primary;
+  font-size: $font-size-base;
+}
+
+.button {
+  @include btn-primary;
+  width: 100%;
+  padding: $spacing-sm;
+}
+
+.linkText {
+  text-align: center;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+
+  a {
+    color: $primary-light;
+    font-weight: 600;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.error {
+  color: $error;
+  font-size: $font-size-sm;
+  text-align: center;
+  background-color: rgba($error, 0.08);
+  border-radius: $border-radius;
+  padding: $spacing-sm;
+}

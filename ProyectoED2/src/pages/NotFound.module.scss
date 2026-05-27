@@ -1,0 +1,9 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.container { padding: 3rem 1rem; text-align: center; }
+.code { font-size: 3rem; margin: 0; color: $primary; }
+.title { font-size: $font-size-lg; margin: 0.5rem 0; }
+.message { color: $text-secondary; margin-bottom: $spacing-md; }
+.homeLink { display: inline-block; padding: 0.5rem 0.75rem; background: $primary; color: $text-primary; border-radius: $border-radius-sm; text-decoration: none; }
+.homeLink:hover { background: $primary-dark; }

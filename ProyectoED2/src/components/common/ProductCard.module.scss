@@ -1,0 +1,72 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  @include card;
+  @include flex-column;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: $primary;
+  }
+}
+
+.media {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.body {
+  padding: $spacing-md;
+  @include flex-column;
+  gap: $spacing-xs;
+  flex: 1;
+}
+
+.title {
+  font-size: $font-size-base;
+  margin: 0;
+}
+
+.category {
+  @include badge;
+  font-size: $font-size-xs;
+  align-self: flex-start;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $primary-light;
+}
+
+.rating {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+.detailBtn {
+  margin-top: 0.5rem;
+  @include btn-primary;
+  padding: 0.5rem 0.75rem;
+  align-self: flex-start;
+}

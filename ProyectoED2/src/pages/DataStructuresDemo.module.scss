@@ -1,0 +1,24 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.container { padding: $spacing-lg; max-width: 1200px; margin: 0 auto; }
+.mainTitle { font-size: $font-size-xl; margin: 0 0 0.25rem 0; text-align: center; }
+.subtitle { text-align: center; color: $text-secondary; margin-bottom: $spacing-lg; }
+.demoGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+@include mobile { .demoGrid { grid-template-columns: 1fr; } }
+.section { background: $text-primary; border: 1px solid $border; border-radius: $border-radius; padding: $spacing-lg; }
+.sectionTitle { font-size: $font-size-lg; margin: 0 0 0.5rem 0; }
+.description { color: $text-secondary; font-size: $font-size-sm; margin-bottom: $spacing-md; }
+.inputGroup { margin-bottom: $spacing-md; }
+.input { width: 100%; padding: $spacing-sm; border: 1px solid $border; border-radius: $border-radius-sm; font-size: $font-size-base; margin-bottom: 0.75rem; }
+.input:focus { outline: none; border-color: $primary; box-shadow: 0 0 0 2px rgba($primary, 0.1); }
+.buttonGroup { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.btn { flex: 1; min-width: 120px; padding: 0.5rem 1rem; background: $primary; color: $text-primary; border: none; border-radius: $border-radius-sm; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+.btn:hover { background: $primary-dark; }
+.btn:active { transform: scale(0.98); }
+.btnDanger { @extend .btn; background: $danger; }
+.btnDanger:hover { background: $danger-dark; }
+.info { display: flex; gap: 1.5rem; margin: $spacing-md 0; padding: 0.75rem 0; border-top: 1px solid $border; border-bottom: 1px solid $border; font-size: $font-size-sm; }
+.info span { display: flex; gap: 0.25rem; }
+.footer { background: $surface-light; border-left: 4px solid $primary; padding: $spacing-md; border-radius: $border-radius-sm; font-size: $font-size-sm; color: $text-secondary; }
+.footer p { margin: 0; }

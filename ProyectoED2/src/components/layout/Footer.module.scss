@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background-color: $primary;
+  color: $text-primary;
+  padding: $spacing-lg;
+  margin-top: $spacing-xl;
+  box-shadow: $shadow-md;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .left {
+    flex: 1 1 320px;
+  }
+
+  .brand {
+    font-weight: 800;
+    font-size: 1.125rem;
+  }
+
+  .description {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    opacity: 0.95;
+  }
+
+  .meta {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.85;
+  }
+
+  .right {
+    flex: 0 0 220px;
+    text-align: left;
+  }
+
+  .linksTitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.875rem;
+  }
+
+  .linksList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem 0;
+
+    li {
+      margin: 0.25rem 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+
+  .copy {
+    font-size: 0.75rem;
+    opacity: 0.85;
+  }
+}

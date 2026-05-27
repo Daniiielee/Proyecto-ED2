@@ -1,0 +1,144 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.chatPage {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: $surface;
+  border-radius: 1rem;
+  box-shadow: $shadow-md;
+  color: $text-primary;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin: 0.6rem 0 0;
+  color: $text-secondary;
+}
+
+.badge {
+  background: rgba($primary, 0.12);
+  color: $primary-light;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.chatContainer {
+  min-height: 380px;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  background: $surface-light;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.statusMessage {
+  color: $text-secondary;
+  font-size: 1rem;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.messagesWrapper {
+  max-height: 520px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-right: 0.4rem;
+}
+
+.messageItem {
+  max-width: 75%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba($text-primary, 0.08);
+  background: $surface;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ownMessage {
+  align-self: flex-end;
+  background: rgba($success, 0.18);
+  color: $text-primary;
+}
+
+.otherMessage {
+  align-self: flex-start;
+  background: rgba($text-primary, 0.05);
+  color: $text-primary;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.userName {
+  color: inherit;
+}
+
+.messageTime {
+  color: $text-secondary;
+  font-weight: 500;
+}
+
+.messageText {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.inputArea {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: $text-primary;
+  background: $surface-light;
+}
+
+.sendButton {
+  @include btn-primary;
+  border-radius: 1rem;
+  padding: 1rem 1.4rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.sendButton:hover {
+  transform: translateY(-1px);
+}
+
+.note {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: $text-secondary;
+}
