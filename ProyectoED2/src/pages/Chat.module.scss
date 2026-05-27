@@ -1,0 +1,142 @@
+.chatPage {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--surface-background, #f9f9fb);
+  border-radius: 1rem;
+  box-shadow: 0 0 24px rgba(22, 32, 60, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin: 0.6rem 0 0;
+  color: var(--text-secondary, #5f6d7a);
+}
+
+.badge {
+  background: #e8f4ff;
+  color: #0d4f8b;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.chatContainer {
+  min-height: 380px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1rem;
+  background: #ffffff;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.statusMessage {
+  color: var(--text-secondary, #5f6d7a);
+  font-size: 1rem;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.messagesWrapper {
+  max-height: 520px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-right: 0.4rem;
+}
+
+.messageItem {
+  max-width: 75%;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.ownMessage {
+  align-self: flex-end;
+  background: #daf7df;
+  color: #102a13;
+}
+
+.otherMessage {
+  align-self: flex-start;
+  background: #f2f5fb;
+  color: #13264b;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.userName {
+  color: inherit;
+}
+
+.messageTime {
+  color: rgba(15, 23, 42, 0.55);
+  font-weight: 500;
+}
+
+.messageText {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.inputArea {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: var(--text-primary, #111827);
+  background: #ffffff;
+}
+
+.sendButton {
+  padding: 1rem 1.4rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #1f6feb;
+  color: #ffffff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.sendButton:hover {
+  transform: translateY(-1px);
+  background: #1558c5;
+}
+
+.note {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary, #5f6d7a);
+}

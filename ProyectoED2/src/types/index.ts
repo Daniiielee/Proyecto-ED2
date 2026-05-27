@@ -11,6 +11,15 @@ export interface Product {
   searchCount: number;
 }
 
+// Interfaz para mensajes de chat en tiempo real
+export interface ChatMessage {
+  id: string;
+  userId: string;
+  userName: string;
+  text: string;
+  createdAt: string;
+}
+
 // Interfaz para usuarios del sistema
 export interface User {
   uid: string;

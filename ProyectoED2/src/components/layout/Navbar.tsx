@@ -52,6 +52,11 @@ export const Navbar: React.FC = () => {
               Historial
             </Link>
           </li>
+          <li>
+            <Link to="/chat" className={styles.link} onClick={() => pushPage('Chat')}>
+              Chat
+            </Link>
+          </li>
         </ul>
 
         {/* Zona de usuario */}

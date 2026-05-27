@@ -14,6 +14,7 @@ import { TopProducts } from './pages/TopProducts';
 import { NavigationHistory } from './pages/NavigationHistory';
 import { NotFound } from './pages/NotFound';
 import DataStructuresDemo from './pages/DataStructuresDemo';
+import Chat from './pages/Chat';
 import PrivateRoute from './components/common/PrivateRoute';
 import './styles/global.scss';
 
@@ -41,6 +42,7 @@ const App: React.FC = () => {
                 <Route path="/top-products" element={<TopProducts />} />
                 <Route path="/history" element={<NavigationHistory />} />
                 <Route path="/structures" element={<DataStructuresDemo />} />
+                <Route path="/chat" element={<Chat />} />
               </Route>
 
               {/* Ruta 404 */}
