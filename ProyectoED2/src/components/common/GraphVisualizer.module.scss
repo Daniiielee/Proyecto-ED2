@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  background: $surface;
+  border: 1px solid $border;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.title {
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.empty {
+  text-align: center;
+  color: $text-secondary;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.verticesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.vertex {
+  background: $surface-light;
+  color: $text-primary;
+  padding: 6px 10px;
+  border-radius: $border-radius-full;
+  border: 1px solid rgba($text-primary, 0.06);
+  font-size: $font-size-sm;
+  font-weight: 600;
+}
+
+.edgesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.edge {
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.traversal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  align-items: center;
+}
+
+.traversalNode {
+  background: rgba($accent-color, 0.12);
+  color: $accent-color;
+  padding: 4px 8px;
+  border-radius: $border-radius-full;
+  font-weight: 700;
+  font-size: $font-size-sm;
+}
