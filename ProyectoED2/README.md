@@ -12,7 +12,7 @@ TechStore DS es una aplicación frontend educativa y demostrativa que combina un
 - Fecha de entrega: 27/05/2026
 - Integrantes: Daniel Vivas, Danie Ruiz
 - Repositorio: https://github.com/Daniiielee/Proyecto-ED2.git
-- Netfly: techstore-ds.netlify.app
+- Netfly: techtstore.netlify.app
 
 ---
 
